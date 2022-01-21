@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# react-crx-mv3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+基于Create-React-APP+Antd的Chrome Extension Manifest V3工程脚手架。
 
-## Available Scripts
+本项目架构实现了以下功能：
 
-In the project directory, you can run:
+- 基于Create-React-App 5.0.0搭建
+- 基于Chrome Extension Manifest V3规范
+- 集成Sass/Scss/Less/Stylus
+- 集成Ant Design
+- 集成mock.js 模拟请求
+- 集成http-proxy-middleware 反向代理
+- 集成react-router-dom v6
+- 解决Ant Design全局样式污染问题
+- 实现Ant Design按需加载
+- 将popup、content、background目录互相独立，便于团队协作开发维护
+- 按照Chrome Extension最终生成目录要求配置webpack
+- 封装fetch，满足popup、content script、background script跨域请求
+- 设置.env.development环境变量，便于在开发环境下禁止委托background script发起请求
+- 实现了完整的Chrome Extension MV3项目Demo。
 
-### `npm start`
+## 教程
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+📚📚本项目有详细的讲解教程。精心编排，超值干货！手把手带你体验React+Antd开发Chrome插件（Manifest V3）完整流程📚📚
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+😃😃花20分钟时间按照教程一步一步搭建，即可全面掌握项目细节，请关注作者**微信公众号「卧梅又闻花」**，阅读文章《2022新版：React+Antd的Chrome插件开发（Manifest V3）》😃😃
 
-### `npm test`
+❤️❤️文章教程是作者花费大量时间精心编排准备的，您的支持是作者写作的最大动力源泉❤️❤️
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 安装
 
-### `npm run build`
+git clone https://github.com/Yuezi32/react-crx-mv3.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 开发调试
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+执行：
+```
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+即可在开发环境预览调试popup页面
 
-### `npm run eject`
+如果需要在开发环境预览调试content script，
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+请修改src/popup/index.js，引入content script：
+```
+    import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
+    import Login from '@/popup/pages/login'
+    import Home from '@/popup/pages/home'
+    import './popup.styl'
+    // 在popup页面调试content script，仅用于开发环境，build前记得要注释掉。
+M   import '@/content'
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## build项目
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+执行：
+```
+yarn build
+```
+即可生成最终Chrome Extension文件。
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 精简最终build文件
 
-## Learn More
+build生成的最终文件，对于插件来说，有很多是不必要的。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+可删除以下文件：
+```
+    ├─ /images
+    ├─ /static
+    |  ├─ /css
+    |  |  ├─ content.css
+    |  |  └─ main.css
+    |  └─ /js
+    |     ├─ background.js
+    |     ├─ content.js
+-   |     ├─ content.js.LICENSE.txt
+    |     ├─ main.js
+-   |     └─ main.js.LICENSE.txt
+-   ├─ asset-manifest.json
+    ├─ favicon.ico
+    ├─ index.html
+    ├─ insert.js
+    └─ manifest.json
+```
