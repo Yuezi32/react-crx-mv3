@@ -28,8 +28,9 @@
 ❤️❤️文章教程是作者花费大量时间精心编排准备的，您的支持是作者写作的最大动力源泉❤️❤️
 
 ## 安装
-
+```
 git clone https://github.com/Yuezi32/react-crx-mv3.git
+```
 
 ## 开发调试
 
