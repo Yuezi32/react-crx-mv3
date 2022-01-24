@@ -23,7 +23,15 @@
 
 📚📚本项目有详细的讲解教程。精心编排，超值干货！手把手带你体验React+Antd开发Chrome插件（Manifest V3）完整流程📚📚
 
-😃😃花20分钟时间按照教程一步一步搭建，即可全面掌握项目细节，请关注作者**微信公众号「卧梅又闻花」**，阅读文章《2022新版：React+Antd开发Chrome插件（Manifest V3）》😃😃
+😃😃
+
+花20分钟时间按照教程一步一步搭建，即可全面掌握项目细节，请关注作者**微信公众号「卧梅又闻花」**，阅读完整版文章：
+
+[《2022新版：React+Antd开发Chrome插件（Manifest V3）上篇》](https://mp.weixin.qq.com/s/5D_6dqz4qI61Ln4oOo1O3A)
+
+[《2022新版：React+Antd开发Chrome插件（Manifest V3）下篇》](https://mp.weixin.qq.com/s/kkS9ODEDe-64BCGqr88RPw)
+
+😃😃
 
 ❤️❤️文章教程是作者花费大量时间精心编排准备的，您的支持是作者写作的最大动力源泉❤️❤️
 
